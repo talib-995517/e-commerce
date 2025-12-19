@@ -1,22 +1,22 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
-
-// In dono files ko yahan import karna zaroori hai
-import "./index.css"; 
-import "./App.css"; 
+import Cart from "./pages/Cart";
+import "./App.css";
+import "./index.css";
 
 function App() {
   return (
-    // "container-div" isliye taaki global padding har page par barabar mile
-    <div className="app-wrapper"> 
+    <CartProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </CartProvider>
   );
 }
 

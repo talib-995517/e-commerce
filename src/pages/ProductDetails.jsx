@@ -3,13 +3,22 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getProductById } from "../services/api";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import { useCart } from "../context/CartContext";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [addedToCart, setAddedToCart] = useState(false);
   const navigate = useNavigate();
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setAddedToCart(true);
+    setTimeout(() => setAddedToCart(false), 2000);
+  };
 
   useEffect(() => {
     getProductById(id)
@@ -51,7 +60,12 @@ const ProductDetails = () => {
               <p>{product.description}</p>
             </div>
 
-            <button className="add-to-cart-btn">Add to Cart</button>
+            <button 
+              className={`add-to-cart-btn ${addedToCart ? 'added' : ''}`} 
+              onClick={handleAddToCart}
+            >
+              {addedToCart ? 'Added to Cart!' : 'Add to Cart'}
+            </button>
           </div>
         </div>
       </div>
