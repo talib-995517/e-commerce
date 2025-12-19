@@ -1,0 +1,253 @@
+.gromuse-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header Styles */
+.gromuse-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 2px solid #f0f0f0;
+  margin-bottom: 30px;
+}
+
+.gromuse-header h1 {
+  color: #2ecc71;
+  font-size: 32px;
+  margin: 0;
+}
+
+.gromuse-search {
+  padding: 12px 20px;
+  width: 300px;
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+}
+
+.gromuse-search:focus {
+  border-color: #2ecc71;
+}
+
+/* Main Layout */
+.gromuse-main {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 40px;
+}
+
+/* Sidebar Styles */
+.gromuse-sidebar {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 12px;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.gromuse-sidebar h2 {
+  margin: 0 0 25px 0;
+  color: #333;
+  font-size: 20px;
+}
+
+.filter-section {
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.filter-section h3 {
+  margin: 0 0 15px 0;
+  color: #555;
+  font-size: 16px;
+}
+
+/* Category Items */
+.category-item {
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-item:hover {
+  background-color: #e8f5e9;
+}
+
+.category-item.active {
+  background-color: #2ecc71;
+  color: white;
+  font-weight: 600;
+}
+
+/* Price Slider */
+.price-slider {
+  padding: 10px 0;
+}
+
+.slider {
+  width: 100%;
+  height: 5px;
+  -webkit-appearance: none;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #2ecc71;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.price-range {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #666;
+}
+
+/* Filter Options */
+.filter-option {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.filter-option input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Color Options */
+.color-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.color-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s;
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+}
+
+/* All Filters Button */
+.all-filters-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.all-filters-btn:hover {
+  background-color: #27ae60;
+}
+
+/* Main Content */
+.gromuse-content {
+  flex: 1;
+}
+
+.sort-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.sort-bar select {
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+}
+
+/* Product Grid */
+.gromuse-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.gromuse-product-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.gromuse-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Empty State */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+/* Loading */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  gap: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .gromuse-main {
+    grid-template-columns: 1fr;
+  }
+  
+  .gromuse-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .gromuse-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .gromuse-search {
+    width: 100%;
+  }
+  
+  .gromuse-grid {
+    grid-template-columns: 1fr;
+  }
+}
