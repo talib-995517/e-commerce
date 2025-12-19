@@ -13,12 +13,8 @@ const ProductDetails = () => {
 
   useEffect(() => {
     getProductById(id)
-      .then(res => {
-        setProduct(res.data);
-      })
-      .catch(() => {
-        setError("Product loading failed");
-      })
+      .then(res => setProduct(res.data))
+      .catch(() => setError("Product loading failed"))
       .finally(() => setLoading(false));
   }, [id]);
 
@@ -27,22 +23,36 @@ const ProductDetails = () => {
   if (!product) return <Error message="Product not found" />;
 
   return (
-    <div className="product-details">
-      <button onClick={() => navigate(-1)} className="back-btn">
-        ← Back to Products
-      </button>
-      
-      <div className="details-container">
-        <img src={product.thumbnail || product.images?.[0]} alt={product.title} />
-        <div className="info">
-          <h1>{product.title}</h1>
-          <p className="category">{product.category}</p>
-          <p className="price">₹{product.price}</p>
-          <p className="description">{product.description}</p>
-          <div className="rating">
-            Rating: {product.rating} ⭐
+    <div className="product-details-page">
+      <div className="container">
+        <button onClick={() => navigate(-1)} className="back-btn">
+  <span className="arrow">←</span> Back to Products
+</button>
+        
+        {/* Ye hai wo box (div) jiske andar details hongi */}
+        <div className="details-card">
+          <div className="image-section">
+            <img src={product.thumbnail || product.images?.[0]} alt={product.title} />
           </div>
-          <button className="add-to-cart">Add to Cart</button>
+          
+          <div className="info-section">
+            <span className="category-tag">{product.category}</span>
+            <h1>{product.title}</h1>
+            <p className="price-text">₹{product.price}</p>
+            
+            <div className="rating-row">
+              <span className="star-icon">★</span>
+              <span>{product.rating}</span>
+              <span className="stock-status">In Stock</span>
+            </div>
+
+            <div className="description-box">
+              <h3>About this item</h3>
+              <p>{product.description}</p>
+            </div>
+
+            <button className="add-to-cart-btn">Add to Cart</button>
+          </div>
         </div>
       </div>
     </div>
