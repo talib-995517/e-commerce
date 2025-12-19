@@ -42,20 +42,27 @@ const Cart = () => {
     <div className="cart-page" style={{
       maxWidth: '1200px',
       margin: '0 auto',
-      padding: '20px'
+      padding: '15px',
+      boxSizing: 'border-box',
+      width: '100%'
     }}>
       <h1 style={{
-        fontSize: '28px',
-        marginBottom: '30px',
+        fontSize: 'clamp(22px, 5vw, 28px)',
+        margin: '0 0 25px 0',
         color: '#333',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: '600'
       }}>Your Shopping Cart</h1>
       
       <div style={{
         display: 'grid',
-        gridTemplateColumns: '1fr 350px',
-        gap: '30px',
-        alignItems: 'start'
+        gridTemplateColumns: '1fr',
+        gap: '25px',
+        alignItems: 'start',
+        '@media (min-width: 992px)': {
+          gridTemplateColumns: '1fr 350px',
+          gap: '30px'
+        }
       }}>
         <div className="cart-items" style={{
           display: 'flex',
@@ -69,17 +76,28 @@ const Cart = () => {
               padding: '15px',
               border: '1px solid #eee',
               display: 'flex',
-              gap: '20px',
+              flexDirection: 'column',
+              gap: '15px',
               position: 'relative',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+              boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+              '@media (min-width: 576px)': {
+                flexDirection: 'row',
+                gap: '20px'
+              }
             }}>
               <div style={{
-                width: '120px',
+                width: '100%',
+                maxWidth: '120px',
                 height: '120px',
                 backgroundColor: '#f8f9fa',
                 borderRadius: '8px',
                 overflow: 'hidden',
-                flexShrink: 0
+                flexShrink: 0,
+                margin: '0 auto',
+                '@media (min-width: 576px)': {
+                  margin: '0',
+                  width: '120px'
+                }
               }}>
                 <img 
                   src={item.thumbnail} 
@@ -99,7 +117,11 @@ const Cart = () => {
                 flex: 1,
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between'
+                justifyContent: 'space-between',
+                width: '100%',
+                '@media (min-width: 576px)': {
+                  width: 'auto'
+                }
               }}>
                 <div>
                   <h3 style={{
@@ -217,7 +239,11 @@ const Cart = () => {
           padding: '20px',
           border: '1px solid #eee',
           position: 'sticky',
-          top: '20px'
+          top: '20px',
+          '@media (min-width: 992px)': {
+            position: 'sticky',
+            top: '90px'
+          }
         }}>
           <h3 style={{
             marginTop: 0,
